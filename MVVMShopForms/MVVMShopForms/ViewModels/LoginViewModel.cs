@@ -24,6 +24,8 @@ namespace MVVMShopForms.ViewModels
         private async void login()
         {
             string Token = await _Context.Login(User);
+            Application.Current.Properties["token"] = Token;
+            await Navigation.PushAsync(new MainPage());
         }
     }
 }

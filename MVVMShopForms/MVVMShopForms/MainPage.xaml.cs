@@ -27,12 +27,12 @@ namespace MVVMShopForms
                 Icon = "logo_aureapng",
                 TargetType = typeof(ProductsView)
             });
-            //menuList.Add(new MainMenuItem()
-            //{
-            //    Title = "Contact",
-            //    Icon = "logo_aureapng",
-            //    TargetType = typeof(ProductsView)
-            //});
+            menuList.Add(new MainMenuItem()
+            {
+                Title = "Contact",
+                Icon = "logo_aureapng",
+                TargetType = typeof(ProductsView)
+            });
             //menuList.Add(new MainMenuItem()
             //{
             //    Title = "About",
