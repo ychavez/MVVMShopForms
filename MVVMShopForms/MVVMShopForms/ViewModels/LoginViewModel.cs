@@ -15,6 +15,14 @@ namespace MVVMShopForms.ViewModels
         public LoginViewModel()
         {
             _Context = new Context();
+            Login = new Command(login);
+        }
+        private async void login()
+        {
+            string Token = await _Context.Login(User);
+
+            Application.Current.Properties["token"] = Token;
+            await Navigation.PushAsync(new MainPage());
         }
     }
 }
