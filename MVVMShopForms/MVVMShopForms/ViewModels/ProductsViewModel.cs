@@ -43,7 +43,7 @@ namespace MVVMShopForms.ViewModels
       
         public  void Add()
         {
-            Application.Current.MainPage = new ProductItemView();
+           Navigation.PushAsync(new ProductItemView());
 
         }
 

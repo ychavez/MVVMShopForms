@@ -54,7 +54,7 @@ namespace MVVMShopForms.Data
             using (_client = new HttpClient(new NativeMessageHandler()))
             {
                 _client.BaseAddress = _UrlBase;
-                var response = await _client.PostAsync("https://productsapidw.azurewebsites.net/api/Account/Login", data).ConfigureAwait(false);
+                var response = await _client.PostAsync(uri, data).ConfigureAwait(false);
                 if (response.IsSuccessStatusCode)
                 {
                     string content = await response.Content.ReadAsStringAsync();
