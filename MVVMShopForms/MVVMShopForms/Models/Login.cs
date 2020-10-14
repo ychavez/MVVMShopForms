@@ -7,11 +7,11 @@ namespace MVVMShopForms.Models
 {
    public class Login : BaseModel
     {
-        private string   _User;
-        public string User
+        private string   _Email;
+        public string Email
         {
-            get => _User;
-            set => SetProperty(ref _User, value);
+            get => _Email;
+            set => SetProperty(ref _Email, value);
 
         }
         private string _Password;

@@ -46,7 +46,7 @@ namespace MVVMShopForms.Data
 
             return TData;
         }
-        public async Task PostDataAsync<T>(T Data, string uri)
+        public async Task<string> PostDataAsync<T>(T Data, string uri)
         {
             var json = JsonConvert.SerializeObject(Data);
             var data = new StringContent(json, Encoding.UTF8, "application/json");
@@ -54,12 +54,14 @@ namespace MVVMShopForms.Data
             using (_client = new HttpClient(new NativeMessageHandler()))
             {
                 _client.BaseAddress = _UrlBase;
-                var response = await _client.PostAsync(uri, data);
+                var response = await _client.PostAsync("https://productsapidw.azurewebsites.net/api/Account/Login", data).ConfigureAwait(false);
                 if (response.IsSuccessStatusCode)
                 {
                     string content = await response.Content.ReadAsStringAsync();
+                    return content;
                 }
             }
+            return "";
         }
 
         public async Task PutDataAsync<T>(T Data, string uri, int id)

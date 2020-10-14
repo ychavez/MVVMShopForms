@@ -85,7 +85,7 @@ namespace ProductsApi.Controllers
             }
             else
             {
-                return BadRequest();
+                return BadRequest("Invalid ObjectModel");
             }
         }
 

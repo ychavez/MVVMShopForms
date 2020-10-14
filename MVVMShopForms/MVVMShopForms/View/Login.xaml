@@ -4,34 +4,12 @@
              x:Class="MVVMShopForms.View.Login">
     <ContentPage.Content>
         <StackLayout>
-            <Image
-                    HeightRequest="150"
-                    Source="profile">
-            </Image>
-            <Label
-                    Text="Usuario">
-            </Label>
-            <Entry
-                    Keyboard="Default"
-                    Placeholder="Usuario"
-                   >
-            </Entry>
-            <Label
-                    Text="Password">
-            </Label>
-            <Entry
-                    IsPassword="True"
-                    Placeholder="Password"
-                 >
-            </Entry>
-            <Button
-                        BackgroundColor="Navy"
-                        BorderRadius="23"
-                        HeightRequest="46"
-                        HorizontalOptions="FillAndExpand"
-                        Text="Login"
-                        TextColor="White">
-            </Button>
+            <Image HeightRequest="150"  Source="profile"></Image>
+            <Label  Text="Usuario"></Label>
+            <Entry Keyboard="Email"  Placeholder="Usuario" Text="{Binding User.Email}"></Entry>
+            <Label Text="Password"></Label>
+            <Entry IsPassword="True" Placeholder="Password"  Text="{Binding User.Password}"></Entry>
+            <Button BackgroundColor="Navy"  BorderRadius="23"  HeightRequest="46"   HorizontalOptions="FillAndExpand"  Text="Login"  TextColor="White" Command="{Binding Login}" ></Button>
         </StackLayout>
     </ContentPage.Content>
 </ContentPage>

@@ -20,8 +20,6 @@ namespace MVVMShopForms.View
             InitializeComponent();
             BindingContext = viewModel = new ProductItemViewModel(product) { Navigation = Navigation };
             btnDelete.IsEnabled = (product != null);
-
-
         }
     }
 }

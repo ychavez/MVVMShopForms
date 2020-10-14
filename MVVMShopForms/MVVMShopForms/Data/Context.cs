@@ -7,31 +7,34 @@ using System.Threading.Tasks;
 
 namespace MVVMShopForms.Data
 {
-  public  class Context
+    public class Context
     {
         private RestService _RestService;
         public Context()
         {
             _RestService = new RestService(Constants.ServiceUrlBase);
         }
-   
 
-       public async Task<List<Product>> GetProducts()
+        public async Task<string> Login(Login user)
         {
-        return await _RestService.GetDataAsync<Product>("products");
-           
+          var Token =  await _RestService.PostDataAsync<Login>(user, "Account/Login");
+            return Token;
+        }
+
+        public async Task<List<Product>> GetProducts()
+        {
+            return await _RestService.GetDataAsync<Product>("products");
         }
 
         public async Task AddProduct(Product product)
         {
-           await _RestService.PostDataAsync<Product>(product, "products");
-           
+            await _RestService.PostDataAsync<Product>(product, "products");
         }
 
         public async Task UpdateProduct(Product product)
         {
             if (product.Id != 0)
-            await _RestService.PutDataAsync<Product>(product, "products",product.Id);
+                await _RestService.PutDataAsync<Product>(product, "products", product.Id);
         }
         public async Task DeteProduct(Product product)
         {
