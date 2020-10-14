@@ -1,0 +1,22 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="MVVMShopForms.View.ProductsView">
+    <ContentPage.ToolbarItems>
+        <ToolbarItem x:Name="BtnAdd" Text="Add" Command="{Binding AddCommand}"></ToolbarItem>
+    </ContentPage.ToolbarItems>
+    <ContentPage.Content>
+        <ListView x:Name="ProductList" ItemsSource="{Binding Products}"
+               ItemTapped="ProductList_ItemTapped">
+            <ListView.ItemTemplate>
+                <DataTemplate>
+                   
+                    <TextCell Text="{Binding Description} " TextColor="White" />
+                    
+                </DataTemplate>
+            </ListView.ItemTemplate>
+
+        </ListView>
+        
+    </ContentPage.Content>
+</ContentPage>
