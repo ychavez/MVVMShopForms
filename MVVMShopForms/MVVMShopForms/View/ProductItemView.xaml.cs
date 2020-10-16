@@ -1,5 +1,6 @@
 ﻿using MVVMShopForms.Models;
 using MVVMShopForms.ViewModels;
+using Plugin.Media;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -21,5 +22,6 @@ namespace MVVMShopForms.View
             BindingContext = viewModel = new ProductItemViewModel(product) { Navigation = Navigation };
             btnDelete.IsEnabled = (product != null);
         }
+       
     }
 }

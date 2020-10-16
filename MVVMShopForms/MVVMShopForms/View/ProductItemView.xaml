@@ -18,6 +18,13 @@
             <Entry Text="{Binding Product.Color}" FontSize="Small"></Entry>
             <Label Text="Precio" FontSize="Medium"></Label>
             <Entry Text="{Binding Product.Price}" FontSize="Small" Keyboard="Numeric"></Entry>
+
+            <Image x:Name="ImgMain" Source="{Binding ImgSource}"></Image>
+            <Button x:Name="btnTomarFoto" Text="Tomar foto" Command="{Binding UploadPhoto}"></Button>
+            <Button x:Name="btnSeleccionarFoto" Text="Seleccionar foto"></Button>
+            
+
+
         </StackLayout>
     </ContentPage.Content>
 </ContentPage>

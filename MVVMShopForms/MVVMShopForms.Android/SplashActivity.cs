@@ -20,7 +20,6 @@ namespace MVVMShopForms.Droid
         {
             base.OnCreate(savedInstanceState);
 
-            // Create your application here
         }
         protected override void OnResume()
         {
@@ -31,7 +30,7 @@ namespace MVVMShopForms.Droid
         }
         async void StartUp()
         {
-            await Task.Delay(10000);
+            await Task.Delay(1000);
             StartActivity(new Intent(Application.Context, typeof(MainActivity)));
         }
 

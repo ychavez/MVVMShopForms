@@ -10,6 +10,7 @@ namespace MVVMShopForms
         public App()
         {
             InitializeComponent();
+            Plugin.Media.CrossMedia.Current.Initialize();
 
             MainPage = new NavigationPage(new Login());
         }
