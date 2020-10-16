@@ -21,7 +21,7 @@
                                     <!-- Main design for our menu items -->
                                     <StackLayout VerticalOptions="FillAndExpand" Orientation="Horizontal" Padding="20,10,0,10" Spacing="20">
                                         <Image Source="{Binding Icon}" WidthRequest="40" HeightRequest="40" VerticalOptions="Center" />
-                                        <Label Text="{Binding Title}" FontSize="Medium" VerticalOptions="Center" TextColor="Black" />
+                                        <Label Text="{Binding Title}" FontSize="Medium" VerticalOptions="Center" TextColor="DarkBlue" />
                                     </StackLayout>
                                 </ViewCell>
                             </DataTemplate>

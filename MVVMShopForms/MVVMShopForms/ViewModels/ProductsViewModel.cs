@@ -14,6 +14,7 @@ namespace MVVMShopForms.ViewModels
 {
     class ProductsViewModel : BaseViewModel
     {
+        public ICommand AddCommand { get; set; }
 
         private Context _Context;
         public ProductsViewModel()
@@ -33,7 +34,6 @@ namespace MVVMShopForms.ViewModels
                 SetProperty(ref _Products, value);
             }
         }
-        public ICommand AddCommand { get; set; }
 
         public async void LoadProducts()
         {

@@ -10,8 +10,10 @@
         <StackLayout>
             <Label Text="Nombre" FontSize="Medium"></Label>
             <Entry Text="{Binding Product.Name}" FontSize="Small"></Entry>
+            
             <Label Text="Descripcion" FontSize="Medium"></Label>
             <Entry Text="{Binding Product.Description}" FontSize="Small"></Entry>
+            
             <Label Text="Color" FontSize="Medium"></Label>
             <Entry Text="{Binding Product.Color}" FontSize="Small"></Entry>
             <Label Text="Precio" FontSize="Medium"></Label>

@@ -3,20 +3,16 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="MVVMShopForms.View.ProductsView">
     <ContentPage.ToolbarItems>
-        <ToolbarItem x:Name="BtnAdd" Text="Add" Command="{Binding AddCommand}"></ToolbarItem>
+        <ToolbarItem x:Name="BtnAdd" Text="Agregar" Command="{Binding AddCommand}"></ToolbarItem>
     </ContentPage.ToolbarItems>
     <ContentPage.Content>
         <ListView x:Name="ProductList" ItemsSource="{Binding Products}"
                ItemTapped="ProductList_ItemTapped">
             <ListView.ItemTemplate>
                 <DataTemplate>
-                   
-                    <TextCell Text="{Binding Description} " TextColor="White" />
-                    
+                    <TextCell Text="{Binding Description}"/>
                 </DataTemplate>
             </ListView.ItemTemplate>
-
         </ListView>
-        
     </ContentPage.Content>
 </ContentPage>

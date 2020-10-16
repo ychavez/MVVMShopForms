@@ -31,7 +31,7 @@ namespace MVVMShopForms.Droid
         }
         async void StartUp()
         {
-            await Task.Delay(1000);
+            await Task.Delay(10000);
             StartActivity(new Intent(Application.Context, typeof(MainActivity)));
         }
 
