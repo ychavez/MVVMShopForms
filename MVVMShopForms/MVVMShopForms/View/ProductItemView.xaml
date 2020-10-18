@@ -8,22 +8,29 @@
     </ContentPage.ToolbarItems>
     <ContentPage.Content>
         <StackLayout>
+
+            <Frame CornerRadius="100" 
+           HeightRequest="200"
+           WidthRequest="200"
+           HorizontalOptions="Center"
+           Padding="0"
+           IsClippedToBounds="True">
+                <Image x:Name="ImgMain" Source="{Binding ImgSource}" HorizontalOptions="Center"
+           VerticalOptions="Center"></Image>
+            </Frame>
             <Label Text="Nombre" FontSize="Medium"></Label>
             <Entry Text="{Binding Product.Name}" FontSize="Small"></Entry>
-            
+
             <Label Text="Descripcion" FontSize="Medium"></Label>
             <Entry Text="{Binding Product.Description}" FontSize="Small"></Entry>
-            
+
             <Label Text="Color" FontSize="Medium"></Label>
             <Entry Text="{Binding Product.Color}" FontSize="Small"></Entry>
             <Label Text="Precio" FontSize="Medium"></Label>
             <Entry Text="{Binding Product.Price}" FontSize="Small" Keyboard="Numeric"></Entry>
 
-            <Image x:Name="ImgMain" Source="{Binding ImgSource}"></Image>
             <Button x:Name="btnTomarFoto" Text="Tomar foto" Command="{Binding UploadPhoto}"></Button>
-            <Button x:Name="btnSeleccionarFoto" Text="Seleccionar foto"></Button>
-            
-
+            <Button x:Name="btnSeleccionarFoto" Text="Seleccionar foto" Command="{Binding PhotoFromFile}"></Button>
 
         </StackLayout>
     </ContentPage.Content>

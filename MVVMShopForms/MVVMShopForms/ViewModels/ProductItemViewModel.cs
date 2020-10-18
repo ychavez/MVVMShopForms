@@ -4,6 +4,7 @@ using MVVMShopForms.ViewModels.Base;
 using Plugin.Media;
 using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Text;
 using System.Windows.Input;
 using Xamarin.Forms;
@@ -19,7 +20,7 @@ namespace MVVMShopForms.ViewModels
 
         public ICommand SaveCommand { get; set; }
         public ICommand DeleteCommand { get; set; }
-
+        public ICommand PhotoFromFile { get; set; }
         public ICommand UploadPhoto { get; set; }
 
         public ProductItemViewModel(Product product = null)
@@ -27,8 +28,13 @@ namespace MVVMShopForms.ViewModels
             Product = product ?? new Product();
             SaveCommand = new Command(Save);
             DeleteCommand = new Command(Delete);
-            UploadPhoto = new Command(BtnTomarFoto_Click);
+            UploadPhoto = new Command(TakePhoto);
+            PhotoFromFile = new Command(TakeFromFile);
             _Context = new Context();
+            if (product != null)
+            {
+                ImgSource = ImageSource.FromStream(() => new MemoryStream(product.Picture));
+            }
         }
 
         private async void Save()
@@ -52,7 +58,7 @@ namespace MVVMShopForms.ViewModels
             await Navigation.PopAsync();
         }
 
-        private async void BtnTomarFoto_Click()
+        private async void TakePhoto()
         {
             await CrossMedia.Current.Initialize();
 
@@ -65,6 +71,7 @@ namespace MVVMShopForms.ViewModels
             {
                 Directory = "Shop",
                 Name = $"{Guid.NewGuid().ToString()}.jpg",
+                PhotoSize = Plugin.Media.Abstractions.PhotoSize.Small,
                 SaveToAlbum = true
             });
 
@@ -72,10 +79,50 @@ namespace MVVMShopForms.ViewModels
             {
                 return;
             }
-            ImgSource = ImageSource.FromStream(() => { var stream = file.GetStream(); return stream; });
+            ImgSource = ImageSource.FromStream(() =>
+            {
+                using (var memoryStream = new MemoryStream())
+                {
+                    file.GetStream().CopyTo(memoryStream);
+                    Product.Picture = memoryStream.ToArray();
+                }
+                var stream = file.GetStream();
+                return stream;
+            });
+        }
+        private async void TakeFromFile()
+        {
+
+            if (!CrossMedia.Current.IsPickPhotoSupported)
+            {
+                await Application.Current.MainPage.DisplayAlert("Fotos no soportadas", "No tiene permisos de almacenamiento", "OK");
+            }
+            var file = await Plugin.Media.CrossMedia.Current.PickPhotoAsync(new Plugin.Media.Abstractions.PickMediaOptions
+            {
+                PhotoSize = Plugin.Media.Abstractions.PhotoSize.Small
+            });
+
+            if (file == null)
+            {
+                return;
+            }
+
+            ImgSource = ImageSource.FromStream(() =>
+            {
+                var stream = file.GetStream();
+                using (var memoryStream = new MemoryStream())
+                {
+                    file.GetStream().CopyTo(memoryStream);
+                    Product.Picture = memoryStream.ToArray();
+                }
+
+                file.Dispose();
+                return stream;
+            });
         }
 
-        
+
+
 
     }
 }

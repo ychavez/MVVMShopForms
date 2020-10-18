@@ -17,19 +17,9 @@ namespace MVVMShopForms.View
         private ProductsViewModel viewModel;
         public ProductsView()
         {
-            try
-            {
             InitializeComponent();
 
-                BindingContext = viewModel = new ProductsViewModel() { Navigation = Navigation };
-     
-            }
-            catch (Exception ex)
-            {
-
-                throw;
-            }
-
+            BindingContext = viewModel = new ProductsViewModel() { Navigation = Navigation };
         }
 
         private async void ProductList_ItemTapped(object sender, ItemTappedEventArgs e)
@@ -43,7 +33,7 @@ namespace MVVMShopForms.View
             ProductList.SelectedItem = null;
 
 
-         }
+        }
         protected override void OnAppearing()
         {
             base.OnAppearing();

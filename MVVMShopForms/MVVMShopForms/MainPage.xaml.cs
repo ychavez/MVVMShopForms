@@ -33,25 +33,11 @@ namespace MVVMShopForms
                 Icon = "logo_aureapng",
                 TargetType = typeof(ProductsView)
             });
-            //menuList.Add(new MainMenuItem()
-            //{
-            //    Title = "About",
-            //    Icon = "logo_aureapng",
-            //    TargetType = typeof(ProductsView)
-            //});
-            //menuList.Add(new MainMenuItem()
-            //{
-            //    Title = "Main",
-            //    Icon = "Images/profile.png",
-            //    TargetType = typeof(ProductsView)
-            //});
-            // Setting our list to be ItemSource for ListView in MainPage.xaml  
-            navigationDrawerList.ItemsSource = menuList;
-            // Initial navigation, this can be used for our home page  
+          
+            navigationDrawerList.ItemsSource = menuList;  
             Detail = new NavigationPage((Page)Activator.CreateInstance(typeof(ProductsView)));
         }
-        // Event for Menu Item selection, here we are going to handle navigation based  
-        // on user selection in menu ListView  
+      
         private void OnMenuItemSelected(object sender, SelectedItemChangedEventArgs e)
         {
             var item = (MainMenuItem)e.SelectedItem;

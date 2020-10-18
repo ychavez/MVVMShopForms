@@ -40,11 +40,13 @@ namespace MVVMShopForms.Models
             get => _Price;
             set => SetProperty(ref _Price, value);
         }
-        private string _Photo;
-        public string Photo 
+
+
+        private byte[] _Picture;
+        public byte[] Picture
         {
-            get => _Photo;
-            set => SetProperty(ref _Photo, value);
+            get => _Picture;
+            set => SetProperty(ref _Picture, value);
         }
     }
 }
