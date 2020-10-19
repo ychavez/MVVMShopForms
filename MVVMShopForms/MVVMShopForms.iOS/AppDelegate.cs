@@ -1,7 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-
 using Foundation;
 using UIKit;
 
@@ -20,8 +19,15 @@ namespace MVVMShopForms.iOS
         //
         // You have 17 seconds to return from this method, or iOS will terminate your application.
         //
+        private void CurrentDomainOnUnhandledException(object sender, UnhandledExceptionEventArgs args)
+        {
+            Exception e = (Exception)args.ExceptionObject;
+            System.Diagnostics.Debug.WriteLine(e.Message);
+        }
+
         public override bool FinishedLaunching(UIApplication app, NSDictionary options)
         {
+            AppDomain.CurrentDomain.UnhandledException += CurrentDomainOnUnhandledException;
             global::Xamarin.Forms.Forms.Init();
             LoadApplication(new App());
 

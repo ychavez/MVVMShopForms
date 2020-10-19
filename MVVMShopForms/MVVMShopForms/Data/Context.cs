@@ -41,6 +41,8 @@ namespace MVVMShopForms.Data
             if (product.Id != 0)
                 await _RestService.DeleteDataAsync("products", product.Id);
         }
+        public bool CheckToken(string token) => _RestService.CheckToken(token);
+        
 
     }
 }

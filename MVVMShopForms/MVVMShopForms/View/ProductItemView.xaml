@@ -7,7 +7,9 @@
         <ToolbarItem x:Name="BtnSave" Text="Guardar" Command="{Binding SaveCommand}"></ToolbarItem>
     </ContentPage.ToolbarItems>
     <ContentPage.Content>
-        <StackLayout>
+        <ScrollView Orientation="Both" x:Name="scrollView">
+            <ScrollView.Content>
+                <StackLayout>
 
             <Frame CornerRadius="100" 
            HeightRequest="200"
@@ -33,5 +35,9 @@
             <Button x:Name="btnSeleccionarFoto" Text="Seleccionar foto" Command="{Binding PhotoFromFile}"></Button>
 
         </StackLayout>
+    <!--</ContentPage.Content>-->
+            </ScrollView.Content>
+        </ScrollView>
     </ContentPage.Content>
 </ContentPage>
+        

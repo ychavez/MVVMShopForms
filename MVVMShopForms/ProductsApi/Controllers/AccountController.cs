@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Http;
+﻿using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
@@ -90,6 +91,13 @@ namespace ProductsApi.Controllers
         }
 
         private async Task<UserInfo> GetUser(string email, string password) => _context.UserInfo.FirstOrDefault(u => u.Email == email && u.Password == password);
+
+        [Authorize]
+        [HttpGet("Check")]
+        public async Task<ActionResult<bool>> CheckToken() {
+
+            return Ok();
+        }
 
     }
 
