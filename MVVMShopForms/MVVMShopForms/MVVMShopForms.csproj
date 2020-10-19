@@ -26,12 +26,6 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Resource Include="Images\profile.png">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Resource>
-  </ItemGroup>
-
-  <ItemGroup>
     <Compile Update="View\ProductItemView.xaml.cs">
       <DependentUpon>ProductItemView.xaml</DependentUpon>
     </Compile>
@@ -50,11 +44,5 @@
     <EmbeddedResource Update="View\ProductsView.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
-  </ItemGroup>
-
-  <ItemGroup>
-    <None Update="Images\profile.png">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </None>
   </ItemGroup>
 </Project>
