@@ -9,6 +9,8 @@ using Android.OS;
 using System.Threading.Tasks;
 using System.IO;
 using System.Diagnostics;
+using Firebase.Iid;
+using Firebase.Messaging;
 
 namespace MVVMShopForms.Droid
 {
@@ -17,6 +19,9 @@ namespace MVVMShopForms.Droid
     {
         protected override void OnCreate(Bundle savedInstanceState)
         {
+
+            FirebaseMessaging.Instance.SubscribeToTopic("EveryBody");
+            
             TabLayoutResource = Resource.Layout.Tabbar;
             ToolbarResource = Resource.Layout.Toolbar;
 
@@ -56,19 +61,16 @@ namespace MVVMShopForms.Droid
                 DateTime.Now, exception.ToString());
                 File.WriteAllText(errorFilePath, errorMessage);
 
-                // Log to Android Device Logging.
+              
                 Android.Util.Log.Error("Crash Report", errorMessage);
             }
             catch
             {
-                // just suppress any error logging exceptions
+               
             }
         }
 
-        /// <summary>
-        // If there is an unhandled exception, the exception information is diplayed 
-        // on screen the next time the app is started (only in debug configuration)
-        /// </summary>
+
         [Conditional("DEBUG")]
         private void DisplayCrashReport()
         {

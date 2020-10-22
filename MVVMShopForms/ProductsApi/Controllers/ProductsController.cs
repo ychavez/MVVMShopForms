@@ -75,6 +75,9 @@ namespace ProductsApi.Controllers
         {
             _context.Products.Add(product);
             await _context.SaveChangesAsync();
+       
+                PushNotificationHandle fcmPush = new PushNotificationHandle();
+            fcmPush.SendNotification("Product created", $"Hello. Product {product.Name} has been created", "EveryBody");
 
             return CreatedAtAction("GetProduct", new { id = product.Id }, product);
         }

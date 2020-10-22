@@ -1,0 +1,40 @@
+{
+  "project_info": {
+    "project_number": "1027216466071",
+    "firebase_url": "https://xamarinformsavanzado.firebaseio.com",
+    "project_id": "xamarinformsavanzado",
+    "storage_bucket": "xamarinformsavanzado.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:1027216466071:android:371e4c9bae5d85d7f909d2",
+        "android_client_info": {
+          "package_name": "com.companyname.mvvmshopforms"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "1027216466071-ci4o234cvnltqndnd41lqv7jcstdoqfa.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBcacUZ5KNHzaCzW5mjlKOt9iXv1n0ea_k"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "1027216466071-ci4o234cvnltqndnd41lqv7jcstdoqfa.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

@@ -17,12 +17,6 @@
             <ListView.ItemTemplate>
                 <DataTemplate>
                     <ViewCell>
-                        <!--<StackLayout VerticalOptions="Center" HorizontalOptions="Center">
-                            <Label Text="{Binding Name}" />
-                            <Image Aspect="AspectFill" HorizontalOptions="Start" Source="{Binding Picture, Converter={StaticResource ByteArrayToImage}}" />
-                           <Label Text="{Binding Description}" />
-                        </StackLayout>-->
-
                         <Grid Padding="10" RowSpacing="10" ColumnSpacing="5">
                             <Grid.RowDefinitions>
                                 <RowDefinition Height="Auto"/>
@@ -32,21 +26,11 @@
                                 <ColumnDefinition Width="Auto"/>
                                 <ColumnDefinition Width="*"/>
                             </Grid.ColumnDefinitions>
-
                             <Image Source="{Binding Picture, Converter={StaticResource ByteArrayToImage}}" HeightRequest="66"   HorizontalOptions="CenterAndExpand"  Aspect="AspectFill"  WidthRequest="66" Grid.RowSpan="2" />
                             <Label Grid.Column="1" Text="{Binding Name}" TextColor="Blue" FontSize="24"/>
-
                             <Label Grid.Column="1"  Grid.Row="1"  Text="{Binding Description}"  TextColor="Gray" FontSize="18"  Opacity="0.6"/>
-
-
                         </Grid>
-
                     </ViewCell>
-
-                    <!--<Image Source="{Binding Picture, Converter={StaticResource ByteArrayToImage}}"></Image>-->
-                    <!--<TextCell Text="{Binding Description}"/>-->
-                        
-                    
                 </DataTemplate>
             </ListView.ItemTemplate>
         </ListView>

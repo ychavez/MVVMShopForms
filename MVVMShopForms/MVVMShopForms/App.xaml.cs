@@ -12,7 +12,7 @@ namespace MVVMShopForms
             Context _Context;
         public App()
         {
-
+         
             InitializeComponent();
             Xamarin.Forms.Application.Current.On<Xamarin.Forms.PlatformConfiguration.Android>().UseWindowSoftInputModeAdjust(WindowSoftInputModeAdjust.Resize);
             Plugin.Media.CrossMedia.Current.Initialize();
