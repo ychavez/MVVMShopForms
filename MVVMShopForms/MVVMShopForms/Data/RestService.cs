@@ -1,15 +1,12 @@
-﻿using MVVMShopForms.Models;
+﻿using ModernHttpClient;
 using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
-using System.Collections.ObjectModel;
 using System.Diagnostics;
 using System.Net.Http;
-using System.Text;
-using ModernHttpClient;
-using System.Threading.Tasks;
-using System.Runtime.InteropServices;
 using System.Net.Http.Headers;
+using System.Text;
+using System.Threading.Tasks;
 
 namespace MVVMShopForms.Data
 {
@@ -18,15 +15,14 @@ namespace MVVMShopForms.Data
         HttpClient _client;
         Uri _UrlBase;
 
-
         public RestService(string urlbase)
         {
             _UrlBase = new Uri(urlbase);
             _client = new HttpClient(new NativeMessageHandler());
             _client.BaseAddress = _UrlBase;
-
         }
-
+        public RestService(string urlbase, string token) : this(urlbase) => _client.DefaultRequestHeaders.Authorization =  new AuthenticationHeaderValue("Bearer", token);
+      
         public async Task<List<T>> GetDataAsync<T>(string uri)
         {
             List<T> TData = null;
@@ -43,14 +39,12 @@ namespace MVVMShopForms.Data
             {
                 Debug.WriteLine("\tERROR {0}", ex.Message);
             }
-
             return TData;
         }
         public async Task<string> PostDataAsync<T>(T Data, string uri)
         {
             var json = JsonConvert.SerializeObject(Data);
             var data = new StringContent(json, Encoding.UTF8, "application/json");
-            _client.BaseAddress = _UrlBase;
             var response = await _client.PostAsync(uri, data).ConfigureAwait(false);
             if (response.IsSuccessStatusCode)
             {
@@ -74,7 +68,6 @@ namespace MVVMShopForms.Data
 
         public async Task DeleteDataAsync(string uri, int id)
         {
-            _client.BaseAddress = _UrlBase;
             var response = await _client.DeleteAsync(String.Concat(uri, "/", id.ToString()));
             if (response.IsSuccessStatusCode)
             {
@@ -86,7 +79,6 @@ namespace MVVMShopForms.Data
         {
             _client.DefaultRequestHeaders.Authorization =
                       new AuthenticationHeaderValue("Bearer", token);
-            _client.BaseAddress = _UrlBase;
             var response = _client.GetAsync("Account/Check").ConfigureAwait(false).GetAwaiter().GetResult();
             if (response.IsSuccessStatusCode)
                 return true;

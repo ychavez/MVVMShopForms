@@ -2,11 +2,7 @@
 using MVVMShopForms.Models;
 using MVVMShopForms.View;
 using MVVMShopForms.ViewModels.Base;
-using System;
-using System.Collections.Generic;
 using System.Collections.ObjectModel;
-using System.Runtime.CompilerServices;
-using System.Text;
 using System.Windows.Input;
 using Xamarin.Forms;
 
@@ -19,35 +15,20 @@ namespace MVVMShopForms.ViewModels
         private Context _Context;
         public ProductsViewModel()
         {
-            _Context = new Context();
+            _Context = new Context(Globals.ServiceApiKey);
             LoadProducts();
             AddCommand = new Command(Add);
             Refresh = new Command(LoadProducts);
         }
         private ObservableCollection<Product> _Products;
-        public ObservableCollection<Product> Products
-        {
-            get => _Products;
-
-            set
-            {
-
-                SetProperty(ref _Products, value);
-            }
-        }
-
+        public ObservableCollection<Product> Products { get => _Products; set { SetProperty(ref _Products, value); } }
         public async void LoadProducts()
         {
             IsBusy = true;
             Products = new ObservableCollection<Product>(await _Context.GetProducts());
             IsBusy = false;
         }
-
-        public void Add()
-        {
-            Navigation.PushAsync(new ProductItemView());
-
-        }
-
+        public void Add() => Navigation.PushAsync(new ProductItemView());
+        
     }
 }

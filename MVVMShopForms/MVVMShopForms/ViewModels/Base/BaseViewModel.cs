@@ -1,6 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
+﻿using System.Collections.Generic;
 using System.Threading.Tasks;
 using Xamarin.Forms;
 
@@ -9,7 +7,7 @@ namespace MVVMShopForms.ViewModels.Base
     public class BaseViewModel : ObservableObject, INavigation
 
     {
-  
+
         private bool isBusy = false;
         public bool IsBusy { get => isBusy; set => SetProperty(ref isBusy, value); }
 
@@ -18,7 +16,7 @@ namespace MVVMShopForms.ViewModels.Base
         public string Title { get => _title; set => SetProperty(ref _title, value); }
         #region INavigation
         private INavigation _navigation;
-        public INavigation Navigation { get => _navigation; set =>  _navigation = value; }
+        public INavigation Navigation { get => _navigation; set => _navigation = value; }
 
         public Page Main { get => Application.Current?.MainPage; set => Application.Current.MainPage = value; }
 
@@ -83,7 +81,7 @@ namespace MVVMShopForms.ViewModels.Base
                 await task;
         }
 
-        public  async Task PushModalAsync(Page page)
+        public async Task PushModalAsync(Page page)
         {
             var task = _navigation?.PushModalAsync(page);
             if (task != null)
@@ -97,7 +95,7 @@ namespace MVVMShopForms.ViewModels.Base
                 await task;
         }
 
-        public  void RemovePage(Page page)
+        public void RemovePage(Page page)
         {
             _navigation?.RemovePage(page);
         }

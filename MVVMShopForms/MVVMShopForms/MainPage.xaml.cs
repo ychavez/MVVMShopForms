@@ -8,16 +8,11 @@ namespace MVVMShopForms
 {
     public partial class MainPage : MasterDetailPage
     {
-        public List<MainMenuItem> menuList
-        {
-            get;
-            set;
-        }
+        public List<MainMenuItem> menuList { get; set; }
         public MainPage()
         {
             InitializeComponent();
             menuList = new List<MainMenuItem>();
-
             menuList.Add(new MainMenuItem()
             {
                 Title = "Productos",
@@ -30,11 +25,10 @@ namespace MVVMShopForms
                 Icon = "logo_aureapng",
                 TargetType = typeof(ProductsView)
             });
-          
-            navigationDrawerList.ItemsSource = menuList;  
+
+            navigationDrawerList.ItemsSource = menuList;
             Detail = new NavigationPage((Page)Activator.CreateInstance(typeof(ProductsView)));
         }
-      
         private void OnMenuItemSelected(object sender, SelectedItemChangedEventArgs e)
         {
             var item = (MainMenuItem)e.SelectedItem;

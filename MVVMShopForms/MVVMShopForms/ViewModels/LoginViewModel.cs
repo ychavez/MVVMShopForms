@@ -1,15 +1,12 @@
 ﻿using MVVMShopForms.Data;
 using MVVMShopForms.Models;
 using MVVMShopForms.ViewModels.Base;
-using System;
-using System.Collections.Generic;
-using System.Text;
 using System.Windows.Input;
 using Xamarin.Forms;
 
 namespace MVVMShopForms.ViewModels
 {
-   public class LoginViewModel : BaseViewModel
+    public class LoginViewModel : BaseViewModel
     {
         private Context _Context;
         public Login User { get; set; }
@@ -17,7 +14,7 @@ namespace MVVMShopForms.ViewModels
 
         public LoginViewModel()
         {
-            User =  new Login();
+            User = new Login();
             _Context = new Context();
             Login = new Command(login);
         }
@@ -32,11 +29,10 @@ namespace MVVMShopForms.ViewModels
                 IsBusy = false;
                 return;
             }
-
             Application.Current.Properties["token"] = Token;
-          await Application.Current.SavePropertiesAsync();
-            Application.Current.MainPage  = new MainPage();
-
+            Globals.ServiceApiKey = Token;
+            await Application.Current.SavePropertiesAsync();
+            Application.Current.MainPage = new MainPage();
             IsBusy = false;
         }
     }

@@ -4,9 +4,9 @@ using System.Text;
 
 namespace MVVMShopForms.Data
 {
-   public static class Constants
+   public static class Globals
     {
         public const string ServiceUrlBase = "https://productsapidw.azurewebsites.net/API/";
-        public const string ServiceApiKey = "sdfg";
+        public static string ServiceApiKey;
     }
 }
