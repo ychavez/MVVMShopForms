@@ -23,16 +23,21 @@ namespace MVVMShopForms.ViewModels
         }
         private async void login()
         {
+            IsBusy = true;
             string Token = await _Context.Login(User);
             if (Token == "")
             {
                 await Application.Current.MainPage.DisplayAlert("Datos no validos", "Usuario no valido, intente de nuevo", "OK");
                 User = new Login();
+                IsBusy = false;
                 return;
             }
 
             Application.Current.Properties["token"] = Token;
+          await Application.Current.SavePropertiesAsync();
             Application.Current.MainPage  = new MainPage();
+
+            IsBusy = false;
         }
     }
 }

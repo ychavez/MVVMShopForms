@@ -15,7 +15,7 @@ namespace MVVMShopForms
          
             InitializeComponent();
             Xamarin.Forms.Application.Current.On<Xamarin.Forms.PlatformConfiguration.Android>().UseWindowSoftInputModeAdjust(WindowSoftInputModeAdjust.Resize);
-            Plugin.Media.CrossMedia.Current.Initialize();
+          //  Plugin.Media.CrossMedia.Current.Initialize();
             if (Xamarin.Forms.Application.Current.Properties.ContainsKey("token"))
             {
                 _Context = new Context();

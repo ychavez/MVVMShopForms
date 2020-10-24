@@ -15,19 +15,20 @@ namespace MVVMShopForms.ViewModels
     class ProductsViewModel : BaseViewModel
     {
         public ICommand AddCommand { get; set; }
-
+        public ICommand Refresh { get; set; }
         private Context _Context;
         public ProductsViewModel()
         {
             _Context = new Context();
             LoadProducts();
             AddCommand = new Command(Add);
+            Refresh = new Command(LoadProducts);
         }
         private ObservableCollection<Product> _Products;
         public ObservableCollection<Product> Products
         {
             get => _Products;
-            
+
             set
             {
 
@@ -37,13 +38,14 @@ namespace MVVMShopForms.ViewModels
 
         public async void LoadProducts()
         {
-
+            IsBusy = true;
             Products = new ObservableCollection<Product>(await _Context.GetProducts());
+            IsBusy = false;
         }
-      
-        public  void Add()
+
+        public void Add()
         {
-           Navigation.PushAsync(new ProductItemView());
+            Navigation.PushAsync(new ProductItemView());
 
         }
 

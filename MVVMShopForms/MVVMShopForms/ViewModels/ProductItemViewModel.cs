@@ -25,6 +25,7 @@ namespace MVVMShopForms.ViewModels
 
         public ProductItemViewModel(Product product = null)
         {
+            IsBusy = true;
             Product = product ?? new Product();
             SaveCommand = new Command(Save);
             DeleteCommand = new Command(Delete);
@@ -35,36 +36,41 @@ namespace MVVMShopForms.ViewModels
             {
                 ImgSource = ImageSource.FromStream(() => new MemoryStream(product.Picture));
             }
+            IsBusy = false;
         }
 
         private async void Save()
         {
+            IsBusy = true;
             if (Product.Id == 0)
                 await _Context.AddProduct(Product);
             else
                 await _Context.UpdateProduct(Product);
-
+            IsBusy = false;
             await Navigation.PopAsync();
 
         }
 
         private async void Delete()
         {
-
+            IsBusy = true;
             bool answer = await Application.Current.MainPage.DisplayAlert("Question?", "Would you like to play a game", "Yes", "No");
 
             await _Context.DeteProduct(Product);
 
             await Navigation.PopAsync();
+            IsBusy = false;
         }
 
         private async void TakePhoto()
         {
+            IsBusy = true;
             await CrossMedia.Current.Initialize();
 
             if (!CrossMedia.Current.IsCameraAvailable || !CrossMedia.Current.IsTakePhotoSupported)
             {
                 await Application.Current.MainPage.DisplayAlert("Camara no disponible", "La camara no esta disponible en este dispositivo", "OK");
+                IsBusy = false;
                 return;
             }
             var file = await CrossMedia.Current.TakePhotoAsync(new Plugin.Media.Abstractions.StoreCameraMediaOptions
@@ -77,6 +83,7 @@ namespace MVVMShopForms.ViewModels
 
             if (file == null)
             {
+                IsBusy = false;
                 return;
             }
             ImgSource = ImageSource.FromStream(() =>
@@ -87,11 +94,14 @@ namespace MVVMShopForms.ViewModels
                     Product.Picture = memoryStream.ToArray();
                 }
                 var stream = file.GetStream();
+                IsBusy = false;
                 return stream;
             });
+            IsBusy = false;
         }
         private async void TakeFromFile()
         {
+            IsBusy = true;
 
             if (!CrossMedia.Current.IsPickPhotoSupported)
             {

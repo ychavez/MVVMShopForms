@@ -13,7 +13,7 @@
     </ContentPage.ToolbarItems>
     <ContentPage.Content>
         <ListView x:Name="ProductList" ItemsSource="{Binding Products}"
-               ItemTapped="ProductList_ItemTapped"  HasUnevenRows="True">
+               ItemTapped="ProductList_ItemTapped"  HasUnevenRows="True" IsPullToRefreshEnabled = "true" RefreshCommand="{Binding Refresh}"  IsRefreshing="{Binding IsBusy}">
             <ListView.ItemTemplate>
                 <DataTemplate>
                     <ViewCell>
