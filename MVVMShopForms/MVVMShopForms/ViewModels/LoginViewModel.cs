@@ -29,7 +29,7 @@ namespace MVVMShopForms.ViewModels
                 IsBusy = false;
                 return;
             }
-            Application.Current.Properties["token"] = Token;
+            Application.Current.Properties["token"] = Token; 
             Globals.ServiceApiKey = Token;
             await Application.Current.SavePropertiesAsync();
             Application.Current.MainPage = new MainPage();
